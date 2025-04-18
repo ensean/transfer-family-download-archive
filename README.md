@@ -24,5 +24,7 @@ Lambda 由具有以下过滤模式的 CloudWatch 日志触发：
 
 1. 创建 Lambda 函数，内容复制`transfer_archiver.py`
 2. 设置 Lambda 函数权限，允许其操作 S3 及其中的文件
-3. 创建 Transfer family log group 订阅
+3. 创建 Transfer family log group 订阅，订阅规则填写`{$.activity-type="CLOSE" && $.bytes-out =*}`, 目标指向步骤 1 创建的 Lambda 函数
+
+注意：可根据需要调整 Lambda 函数日志级别以及保存时长
 
